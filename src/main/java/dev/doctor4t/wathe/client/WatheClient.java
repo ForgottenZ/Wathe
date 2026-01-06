@@ -381,7 +381,10 @@ public class WatheClient implements ClientModInitializer {
     }
 
     public static boolean isInstinctEnabled() {
-        return instinctKeybind.isPressed() && ((isKiller() && isPlayerAliveAndInSurvival()) || isPlayerSpectatingOrCreative());
+        if (instinctKeybind.isPressed()) {
+            return true;
+        }
+        return (isKiller() && isPlayerAliveAndInSurvival()) || isPlayerSpectatingOrCreative();
     }
 
     public static int getLockedRenderDistance(boolean ultraPerfMode) {
